@@ -15,9 +15,8 @@ struct SetGameView: View {
             topBar
             Grid(viewModel.dealtCards) { card in
                 SetCardView(card: card)
-                .padding(5)
+                .padding(2)
             }
-            .padding()
         }
     }
     

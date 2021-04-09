@@ -34,15 +34,15 @@ struct Diamond: Shape {
 struct Squiggle: Shape {
     func path(in rect: CGRect) -> Path {
         var p = Path()
-        p.move(to: getCGPoint(x: 0.0, y: 0.70, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.25, y: 0.05, rect: rect), control1: getCGPoint(x: 0.00, y: 0.50, rect: rect), control2: getCGPoint(x: 0.05, y: 0.05, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.65, y: 0.25, rect: rect), control1: getCGPoint(x: 0.45, y: 0.05, rect: rect), control2: getCGPoint(x: 0.50, y: 0.25, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.90, y: 0.00, rect: rect), control1: getCGPoint(x: 0.80, y: 0.25, rect: rect), control2: getCGPoint(x: 0.80, y: 0.00, rect: rect))
-        p.addCurve(to: getCGPoint(x: 1.00, y: 0.30, rect: rect), control1: getCGPoint(x: 0.95, y: 0.00, rect: rect), control2: getCGPoint(x: 1.00, y: 0.10, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.75, y: 0.95, rect: rect), control1: getCGPoint(x: 1.00, y: 0.50, rect: rect), control2: getCGPoint(x: 0.95, y: 0.95, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.35, y: 0.75, rect: rect), control1: getCGPoint(x: 0.55, y: 0.95, rect: rect), control2: getCGPoint(x: 0.50, y: 0.75, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.10, y: 1.00, rect: rect), control1: getCGPoint(x: 0.20, y: 0.75, rect: rect), control2: getCGPoint(x: 0.20, y: 1.00, rect: rect))
-        p.addCurve(to: getCGPoint(x: 0.00, y: 0.70, rect: rect), control1: getCGPoint(x: 0.05, y: 1.00, rect: rect), control2: getCGPoint(x: 0.00, y: 0.90, rect: rect))
+        p.move(to: getCGPoint(x: 0.70, y: 0.0, rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.05, y: 0.25, rect: rect), control1: getCGPoint(x: 0.50, y: 0.00, rect: rect), control2: getCGPoint(x: 0.05, y: 0.05,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.25, y: 0.65, rect: rect), control1: getCGPoint(x: 0.05, y: 0.45, rect: rect), control2: getCGPoint(x: 0.25, y: 0.50,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.00, y: 0.90, rect: rect), control1: getCGPoint(x: 0.25, y: 0.80, rect: rect), control2: getCGPoint(x: 0.00, y: 0.80,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.30, y: 1.00, rect: rect), control1: getCGPoint(x: 0.00, y: 0.95, rect: rect), control2: getCGPoint(x: 0.10, y: 1.00,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.95, y: 0.75, rect: rect), control1: getCGPoint(x: 0.50, y: 1.00, rect: rect), control2: getCGPoint(x: 0.95, y: 0.95,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.75, y: 0.35, rect: rect), control1: getCGPoint(x: 0.95, y: 0.55, rect: rect), control2: getCGPoint(x: 0.75, y: 0.50,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 1.00, y: 0.10, rect: rect), control1: getCGPoint(x: 0.75, y: 0.20, rect: rect), control2: getCGPoint(x: 1.00, y: 0.20,  rect: rect))
+        p.addCurve(to: getCGPoint(x: 0.70, y: 0.00, rect: rect), control1: getCGPoint(x: 1.00, y: 0.05, rect: rect), control2: getCGPoint(x: 0.90, y: 0.00,  rect: rect))
         p.closeSubpath()
         return p
     }
@@ -68,14 +68,14 @@ struct Triangle: Shape {
 struct ShapesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            VStack{
+            HStack{
                 Squiggle()
-                    .frame(width: 250, height: 150)
+                    .frame(width: 50, height: 100)
                 Diamond()
                     .stroke(Color.green)
-                    .frame(width: 250.0, height: 150.0)
+                    .frame(width: 50.0, height: 100)
                 Capsule()
-                    .frame(width: 250, height: 150)
+                    .frame(width: 50, height: 100)
             }
         }
     }

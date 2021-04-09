@@ -11,12 +11,21 @@ struct SetCardView: View {
     var card: SetCard
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
-            RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 3).fill(Color.black)
-            CardContent(card: card)
+        GeometryReader { geometry in
+            // Prioritize filling the width
+            let newHeight = geometry.size.width / cardAspectRatio
+            ZStack {
+                RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
+                RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 2).fill(Color.black)
+                CardContent(card: card)
+            }
+            .frame(width: geometry.size.width, height: newHeight)
+            .offset(x: 0, y: geometry.size.height / 2 - newHeight / 2)
         }
     }
+    
+    // MARK: - UI Constants
+    let cardAspectRatio: CGFloat = 12/9
 }
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
