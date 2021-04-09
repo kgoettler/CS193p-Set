@@ -20,8 +20,12 @@
 		14A25704261FBDD900F0E111 /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A25703261FBDD900F0E111 /* SetGameView.swift */; };
 		14A25707261FBE7B00F0E111 /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A25706261FBE7B00F0E111 /* SetGameViewModel.swift */; };
 		14A25711261FC96E00F0E111 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A25710261FC96E00F0E111 /* Shapes.swift */; };
-		14E339932620CACC00A7B49C /* HStripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339922620CACC00A7B49C /* HStripe.swift */; };
 		14E339962620CB6900A7B49C /* StripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339952620CB6900A7B49C /* StripView.swift */; };
+		14E3399A2620D45C00A7B49C /* StripedPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339992620D45C00A7B49C /* StripedPattern.swift */; };
+		14E339A42620D7EF00A7B49C /* CardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339A32620D7EF00A7B49C /* CardShape.swift */; };
+		14E339A72620D81600A7B49C /* CardShapeColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */; };
+		14E339AA2620D83D00A7B49C /* CardShapeShadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339A92620D83D00A7B49C /* CardShapeShadingModifier.swift */; };
+		14E339AF2620DDA000A7B49C /* CardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339AE2620DDA000A7B49C /* CardContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +44,12 @@
 		14A25703261FBDD900F0E111 /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
 		14A25706261FBE7B00F0E111 /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		14A25710261FC96E00F0E111 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
-		14E339922620CACC00A7B49C /* HStripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStripe.swift; sourceTree = "<group>"; };
 		14E339952620CB6900A7B49C /* StripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripView.swift; sourceTree = "<group>"; };
+		14E339992620D45C00A7B49C /* StripedPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedPattern.swift; sourceTree = "<group>"; };
+		14E339A32620D7EF00A7B49C /* CardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardShape.swift; sourceTree = "<group>"; };
+		14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardShapeColorModifier.swift; sourceTree = "<group>"; };
+		14E339A92620D83D00A7B49C /* CardShapeShadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardShapeShadingModifier.swift; sourceTree = "<group>"; };
+		14E339AE2620DDA000A7B49C /* CardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,17 +83,14 @@
 			isa = PBXGroup;
 			children = (
 				140CDFDA261FA85000CBFF75 /* SetGameApp.swift */,
-				14A25710261FC96E00F0E111 /* Shapes.swift */,
 				140CDFDC261FA85000CBFF75 /* ContentView.swift */,
 				140CDFDE261FA85100CBFF75 /* Assets.xcassets */,
 				140CDFE3261FA85100CBFF75 /* Info.plist */,
-				140CDFF0261FA88B00CBFF75 /* Cardify.swift */,
 				140CDFED261FA87C00CBFF75 /* Grid.swift */,
 				140CDFEA261FA87500CBFF75 /* GridLayout.swift */,
+				14E3399C2620D49800A7B49C /* Views */,
 				140CDFF4261FAA2E00CBFF75 /* SetGame.swift */,
 				14A25706261FBE7B00F0E111 /* SetGameViewModel.swift */,
-				14A25703261FBDD900F0E111 /* SetGameView.swift */,
-				14E339922620CACC00A7B49C /* HStripe.swift */,
 				14E339952620CB6900A7B49C /* StripView.swift */,
 				140CE002261FBB3B00CBFF75 /* Extensions */,
 				140CDFE0261FA85100CBFF75 /* Preview Content */,
@@ -108,6 +113,21 @@
 				140CDFF9261FB89900CBFF75 /* Array+Identifiable.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		14E3399C2620D49800A7B49C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				140CDFF0261FA88B00CBFF75 /* Cardify.swift */,
+				14A25710261FC96E00F0E111 /* Shapes.swift */,
+				14E339992620D45C00A7B49C /* StripedPattern.swift */,
+				14A25703261FBDD900F0E111 /* SetGameView.swift */,
+				14E339AE2620DDA000A7B49C /* CardContent.swift */,
+				14E339A32620D7EF00A7B49C /* CardShape.swift */,
+				14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */,
+				14E339A92620D83D00A7B49C /* CardShapeShadingModifier.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,16 +199,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E339A72620D81600A7B49C /* CardShapeColorModifier.swift in Sources */,
+				14E339AF2620DDA000A7B49C /* CardContent.swift in Sources */,
+				14E339A42620D7EF00A7B49C /* CardShape.swift in Sources */,
 				140CDFEB261FA87500CBFF75 /* GridLayout.swift in Sources */,
 				140CDFF5261FAA2E00CBFF75 /* SetGame.swift in Sources */,
 				14A25704261FBDD900F0E111 /* SetGameView.swift in Sources */,
-				14E339932620CACC00A7B49C /* HStripe.swift in Sources */,
 				140CDFDD261FA85000CBFF75 /* ContentView.swift in Sources */,
 				140CDFDB261FA85000CBFF75 /* SetGameApp.swift in Sources */,
+				14E339AA2620D83D00A7B49C /* CardShapeShadingModifier.swift in Sources */,
 				140CDFF1261FA88B00CBFF75 /* Cardify.swift in Sources */,
 				140CDFFA261FB89900CBFF75 /* Array+Identifiable.swift in Sources */,
 				140CDFEE261FA87C00CBFF75 /* Grid.swift in Sources */,
 				140CDFFD261FB89E00CBFF75 /* Array+Only.swift in Sources */,
+				14E3399A2620D45C00A7B49C /* StripedPattern.swift in Sources */,
 				14A25707261FBE7B00F0E111 /* SetGameViewModel.swift in Sources */,
 				14A25711261FC96E00F0E111 /* Shapes.swift in Sources */,
 				14E339962620CB6900A7B49C /* StripView.swift in Sources */,

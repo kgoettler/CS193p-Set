@@ -22,4 +22,7 @@ class SetGameViewModel: ObservableObject {
         model.deck.count
     }
     
+    func resetGame() {
+        model = SetGame()
+    }
 }

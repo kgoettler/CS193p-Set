@@ -16,10 +16,10 @@ struct SetGame {
         deck = Array<SetCard>()
         dealtCards = Array<SetCard>()
         var i = 0
-        for count in SetCount.allCases {
-            for shape in SetShape.allCases {
-                for color in SetColor.allCases {
-                    for shading in SetShading.allCases {
+        for count in SetCard.SetCount.allCases {
+            for shape in SetCard.SetShape.allCases {
+                for color in SetCard.SetColor.allCases {
+                    for shading in SetCard.SetShading.allCases {
                         deck.append(SetCard(shape: shape, color: color, fill: shading, count: count, id: i))
                         i += 1
                     }
@@ -53,39 +53,30 @@ struct SetCard: Identifiable {
     var isSelected: Bool = false
     var isMatched: Bool = false
     var id: Int
-}
-
-enum SetCount: Int, CaseIterable {
-    case one = 1
-    case two = 2
-    case three = 3
-}
-
-enum SetShape: String, CaseIterable {
-    case diamond
-    case oval
-    case squiggle
-}
-
-enum SetColor: CaseIterable {
-    case red
-    case green
-    case blue
     
-    var getColor: Color {
-        switch self {
-        case .red:
-            return Color.red
-        case .green:
-            return Color.green
-        case .blue:
-            return Color.blue
-        }
+    enum SetCount: Int, CaseIterable {
+        case one = 1
+        case two = 2
+        case three = 3
     }
+
+    enum SetShape: String, CaseIterable {
+        case diamond
+        case oval
+        case squiggle
+    }
+
+    enum SetColor: CaseIterable {
+        case red
+        case green
+        case blue
+    }
+
+    enum SetShading: CaseIterable {
+        case solid
+        case striped
+        case open
+    }
+    
 }
 
-enum SetShading: CaseIterable {
-    case solid
-    case striped
-    case open
-}

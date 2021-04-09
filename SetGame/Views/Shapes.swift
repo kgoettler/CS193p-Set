@@ -65,24 +65,18 @@ struct Triangle: Shape {
     }
 }
 
-struct ShapesView: View {
-    var body: some View {
-        VStack{
-            Squiggle()
-                .frame(width: 250, height: 150)
-            Diamond()
-                .stroke(Color.green)
-                .frame(width: 250.0, height: 150.0)
-            Capsule()
-                .frame(width: 250, height: 150)
-        }
-    }
-}
-
 struct ShapesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ShapesView()
+            VStack{
+                Squiggle()
+                    .frame(width: 250, height: 150)
+                Diamond()
+                    .stroke(Color.green)
+                    .frame(width: 250.0, height: 150.0)
+                Capsule()
+                    .frame(width: 250, height: 150)
+            }
         }
     }
 }
