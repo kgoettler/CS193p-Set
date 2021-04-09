@@ -26,6 +26,7 @@
 		14E339A72620D81600A7B49C /* CardShapeColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */; };
 		14E339AA2620D83D00A7B49C /* CardShapeShadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339A92620D83D00A7B49C /* CardShapeShadingModifier.swift */; };
 		14E339AF2620DDA000A7B49C /* CardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339AE2620DDA000A7B49C /* CardContent.swift */; };
+		14E339B32620E4D600A7B49C /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E339B22620E4D600A7B49C /* SetCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardShapeColorModifier.swift; sourceTree = "<group>"; };
 		14E339A92620D83D00A7B49C /* CardShapeShadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardShapeShadingModifier.swift; sourceTree = "<group>"; };
 		14E339AE2620DDA000A7B49C /* CardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContent.swift; sourceTree = "<group>"; };
+		14E339B22620E4D600A7B49C /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				14A25710261FC96E00F0E111 /* Shapes.swift */,
 				14E339992620D45C00A7B49C /* StripedPattern.swift */,
 				14A25703261FBDD900F0E111 /* SetGameView.swift */,
+				14E339B22620E4D600A7B49C /* SetCardView.swift */,
 				14E339AE2620DDA000A7B49C /* CardContent.swift */,
 				14E339A32620D7EF00A7B49C /* CardShape.swift */,
 				14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */,
@@ -212,6 +215,7 @@
 				140CDFFA261FB89900CBFF75 /* Array+Identifiable.swift in Sources */,
 				140CDFEE261FA87C00CBFF75 /* Grid.swift in Sources */,
 				140CDFFD261FB89E00CBFF75 /* Array+Only.swift in Sources */,
+				14E339B32620E4D600A7B49C /* SetCardView.swift in Sources */,
 				14E3399A2620D45C00A7B49C /* StripedPattern.swift in Sources */,
 				14A25707261FBE7B00F0E111 /* SetGameViewModel.swift in Sources */,
 				14A25711261FC96E00F0E111 /* Shapes.swift in Sources */,

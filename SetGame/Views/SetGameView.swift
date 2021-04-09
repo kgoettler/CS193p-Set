@@ -37,18 +37,6 @@ struct SetGameView: View {
     }
 }
 
-struct SetCardView: View {
-    var card: SetCard
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
-            RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 3).fill(Color.black)
-            CardContent(card: card)
-        }
-    }
-}
-
 struct SetGameView_Previews: PreviewProvider {
     static var previews: some View {
         let game = SetGameViewModel()
