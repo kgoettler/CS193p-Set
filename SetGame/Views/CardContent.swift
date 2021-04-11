@@ -52,7 +52,6 @@ struct CardContent: View {
     }
     
     // MARK: - UI Parameters
-    var shapeAspectRatio: CGFloat = 10/6
     var shapeHeightScalingFactor: CGFloat = 0.7
     var shapeWidthScalingFactor: CGFloat = 0.7
 }

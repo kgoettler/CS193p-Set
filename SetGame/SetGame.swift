@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SetGame {
     private(set) var deck: Array<SetCard>
-    private(set) var dealtCards: Array<SetCard>
+    var dealtCards: Array<SetCard>
     
     init() {
         deck = Array<SetCard>()
@@ -38,6 +38,20 @@ struct SetGame {
             return deck.removeFirst()
         }
         return nil
+    }
+    
+    mutating func deal(in: Int) {
+        for _ in 1...`in` {
+            if let card = self.draw() {
+                dealtCards.append(card)
+            } else {
+                break
+            }
+        }
+    }
+    
+    mutating func shuffleDealtCards() {
+        self.dealtCards.shuffle()
     }
     
 }

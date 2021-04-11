@@ -25,4 +25,18 @@ class SetGameViewModel: ObservableObject {
     func resetGame() {
         model = SetGame()
     }
+    
+    func deal(in: Int) {
+        model.deal(in: `in`)
+    }
+    
+    func shuffle() {
+        model.shuffleDealtCards()
+    }
+    
+    func toggleSelect(card: SetCard) {
+        let index = model.dealtCards.firstIndex(matching: card)!
+        model.dealtCards[index].isSelected = !model.dealtCards[index].isSelected
+        print("Selected \(model.dealtCards[index])")
+    }
 }

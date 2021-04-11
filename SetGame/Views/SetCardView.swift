@@ -21,6 +21,7 @@ struct SetCardView: View {
             }
             .frame(width: geometry.size.width, height: newHeight)
             .offset(x: 0, y: geometry.size.height / 2 - newHeight / 2)
+            .scaleEffect(card.isSelected ? CGSize(width: 1.1, height: 1.1) : CGSize(width: 1.0, height: 1.0))
         }
     }
     
