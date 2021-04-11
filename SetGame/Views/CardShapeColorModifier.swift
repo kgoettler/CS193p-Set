@@ -16,8 +16,8 @@ struct CardContentColorModifier: ViewModifier {
             if color == .green {
                 content.foregroundColor(Color.green)
             }
-            if color == .blue {
-                content.foregroundColor(Color.blue)
+            if color == .purple {
+                content.foregroundColor(Color.purple)
             }
             if color == .red {
                 content.foregroundColor(Color.red)

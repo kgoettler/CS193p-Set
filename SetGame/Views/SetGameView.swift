@@ -25,25 +25,27 @@ struct SetGameView: View {
     }
     
     var topBar: some View {
-        HStack {
-            Button(action: {
-                withAnimation(.easeInOut(duration: 0.75)) {
-                    viewModel.resetGame()
-                }
-            }, label: {
-                HStack {
-                    Image(systemName: "plus.square.on.square")
-                    Text("New Game")
-                }.padding()
-            })
-            Spacer()
-            Button(action: {
-                viewModel.deal(in: 3)
-            }, label: {
-                Text("Deal 3 Cards").padding()
-            })
-        }
-
+        GeometryReader { geometry in
+            HStack(alignment: .center) {
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.75)) {
+                        viewModel.resetGame()
+                    }
+                }, label: {
+                    HStack {
+                        Image(systemName: "plus.square.on.square")
+                        Text("New Game")
+                    }
+                }).frame(maxWidth: geometry.size.width/3)
+                Text("Set\nScore: \(viewModel.score)").bold().multilineTextAlignment(.center)
+                    .frame(maxWidth: geometry.size.width/3)
+                Button(action: {
+                    viewModel.deal(in: 3)
+                }, label: {
+                    Text("Deal 3 Cards")
+                }).frame(maxWidth: geometry.size.width / 3)
+            }
+        }.frame(maxHeight: 50).padding(.top)
     }
 }
 

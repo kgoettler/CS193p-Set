@@ -49,10 +49,10 @@ struct Stripe: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        HStack(spacing: 0) {
+        VStack(spacing: 0) {
             ForEach(0..<numberOfStrips) { number in
                 Color.white
-                color.frame(width: lineWidth)
+                color.frame(height: lineWidth)
                 if number == numberOfStrips - 1 {
                     Color.white
                 }

@@ -30,7 +30,7 @@ struct SetCardView: View {
 }
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = SetCard(shape: .squiggle, color: .blue, fill: .striped, count: .three, id: 1)
+        let card = SetCard(shape: .squiggle, color: .purple, fill: .striped, count: .three, id: 1)
         SetCardView(card: card)
     }
 }

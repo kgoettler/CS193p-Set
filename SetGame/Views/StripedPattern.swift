@@ -12,16 +12,16 @@ struct StripedPattern: Shape {
     var stripeWidth: Int
     
     func path(in rect: CGRect) -> Path {
-        let numberOfStripes = Int(rect.width) / stripeWidth
+        let numberOfStripes = Int(rect.height) / stripeWidth
         var path = Path()
         path.move(to: rect.origin)
         for index in 0...numberOfStripes {
             if index % 2 == 0 {
                 path.addRect(CGRect(
-                    x: index * stripeWidth,
-                    y: 0,
-                    width: stripeWidth,
-                    height: Int(rect.height)))
+                    x: 0,
+                    y: index * stripeWidth,
+                    width: Int(rect.width),
+                    height: stripeWidth))
             }
         }
         return path

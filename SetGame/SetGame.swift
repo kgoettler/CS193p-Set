@@ -11,6 +11,7 @@ import SwiftUI
 struct SetGame {
     private(set) var deck: Array<SetCard>
     var dealtCards: Array<SetCard>
+    var score: Int = 0
     
     init() {
         deck = Array<SetCard>()
@@ -50,10 +51,74 @@ struct SetGame {
         }
     }
     
-    mutating func shuffleDealtCards() {
-        self.dealtCards.shuffle()
+    mutating func deal(in: Int, at: Int) {
+        for _ in 1...`in` {
+            if let card = self.draw() {
+                dealtCards.insert(card, at: at)
+            } else {
+                break
+            }
+        }
     }
     
+    var isSelectionSet: Bool {
+        if threeCardsSelected {
+            let selectedCards = dealtCards.filter({card in card.isSelected})
+            let numberOfShapes = selectedCards.map({ $0.shape }).distinct().count
+            let numberOfColors = selectedCards.map({ $0.color }).distinct().count
+            let numberOfFills = selectedCards.map({ $0.fill }).distinct().count
+            let numberOfCounts = selectedCards.map({ $0.count }).distinct().count
+            if numberOfShapes != 2 && numberOfColors != 2 && numberOfFills != 2 && numberOfCounts != 2 {
+                print("Set found!")
+                return true
+            }
+        }
+        return false
+    }
+    
+    mutating func handlePotentialSet() {
+        if isSelectionSet {
+            score += 1
+            // Remove matched cards
+            var i = 0
+            var insertIndex = [Int]()
+            repeat {
+                if dealtCards[i].isSelected {
+                    dealtCards.remove(at: i)
+                    insertIndex.append(i)
+                } else {
+                    i += 1
+                }
+            } while i < dealtCards.count
+            // Deal three new cards
+            if dealtCards.count < 12 {
+                for index in insertIndex {
+                    deal(in: 1, at: index)
+                }
+            }
+        } else {
+            score -= 1
+            dealtCards.indices.filter({ dealtCards[$0].isSelected }).forEach({ dealtCards[$0].isSelected = false })
+        }
+    }
+    
+    var threeCardsSelected: Bool {
+        var numberOfSelectedCards: Int = 0
+        for index in 0..<dealtCards.count {
+            if dealtCards[index].isSelected {
+                numberOfSelectedCards += 1
+            }
+        }
+        return numberOfSelectedCards == 3
+    }
+    
+}
+
+extension Array where Element: Hashable {
+    func distinct() -> Array<Element> {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
+    }
 }
 
 ///
@@ -68,25 +133,25 @@ struct SetCard: Identifiable {
     var isMatched: Bool = false
     var id: Int
     
-    enum SetCount: Int, CaseIterable {
+    enum SetCount: Int, CaseIterable, Hashable {
         case one = 1
         case two = 2
         case three = 3
     }
 
-    enum SetShape: String, CaseIterable {
+    enum SetShape: String, CaseIterable, Hashable {
         case diamond
         case oval
         case squiggle
     }
 
-    enum SetColor: CaseIterable {
+    enum SetColor: CaseIterable, Hashable {
         case red
         case green
-        case blue
+        case purple
     }
 
-    enum SetShading: CaseIterable {
+    enum SetShading: CaseIterable, Hashable {
         case solid
         case striped
         case open
