@@ -26,6 +26,10 @@ class SetGameViewModel: ObservableObject {
         model.deck.count
     }
     
+    var isSelectionSet: Bool {
+        model.isSelectionSet
+    }
+    
     func resetGame() {
         model = SetGame()
     }
@@ -41,4 +45,5 @@ class SetGameViewModel: ObservableObject {
             model.handlePotentialSet()
         }
     }
+    
 }

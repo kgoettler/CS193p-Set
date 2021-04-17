@@ -16,12 +16,12 @@ struct SetCardView: View {
             let newHeight = geometry.size.width / cardAspectRatio
             ZStack {
                 RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
-                RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 2).fill(Color.black)
+                RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 2).fill(card.isMatched ? Color.green : Color.black)
                 CardContent(card: card)
             }
             .frame(width: geometry.size.width, height: newHeight)
             .offset(x: 0, y: geometry.size.height / 2 - newHeight / 2)
-            .scaleEffect(card.isSelected ? CGSize(width: 1.1, height: 1.1) : CGSize(width: 1.0, height: 1.0))
+            .scaleEffect(card.isSelected ? CGSize(width: 1.05, height: 1.05) : CGSize(width: 1.0, height: 1.0))
         }
     }
     
@@ -30,7 +30,7 @@ struct SetCardView: View {
 }
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = SetCard(shape: .squiggle, color: .purple, fill: .striped, count: .three, id: 1)
+        let card = SetCard(shape: .squiggle, color: .purple, fill: .striped, count: .three, isMatched: true, id: 1)
         SetCardView(card: card)
     }
 }

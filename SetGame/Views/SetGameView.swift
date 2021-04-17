@@ -14,11 +14,15 @@ struct SetGameView: View {
         VStack {
             topBar
             Grid(viewModel.dealtCards) { card in
-                SetCardView(card: card).padding(5).onTapGesture {
-                    withAnimation(.linear(duration: 0.05)) {
-                        viewModel.toggleSelect(card: card)
+                SetCardView(card: card)
+                    .padding(5)
+                    .transition(AnyTransition.slide)
+                    .animation(.default)
+                    .onTapGesture {
+                        withAnimation(.linear(duration: 0.05)) {
+                            viewModel.toggleSelect(card: card)
+                        }
                     }
-                }
   
             }
         }
@@ -37,13 +41,16 @@ struct SetGameView: View {
                         Text("New Game")
                     }
                 }).frame(maxWidth: geometry.size.width/3)
-                Text("Set\nScore: \(viewModel.score)").bold().multilineTextAlignment(.center)
+                Text("Set\nScore: \(viewModel.score)")
+                    .bold()
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: geometry.size.width/3)
-                Button(action: {
-                    viewModel.deal(in: 3)
-                }, label: {
-                    Text("Deal 3 Cards")
-                }).frame(maxWidth: geometry.size.width / 3)
+                Button(
+                    action: { viewModel.deal(in: 3) },
+                    label: { Text("Deal 3 Cards") }
+                )
+                    .disabled(viewModel.deck.count < 3)
+                    .frame(maxWidth: geometry.size.width / 3)
             }
         }.frame(maxHeight: 50).padding(.top)
     }

@@ -81,11 +81,10 @@ struct SetGame {
             score += 1
             // Remove matched cards
             var i = 0
-            var insertIndex = [Int]()
+            let insertIndex = dealtCards.indices.filter({ index in dealtCards[index].isSelected })
             repeat {
                 if dealtCards[i].isSelected {
                     dealtCards.remove(at: i)
-                    insertIndex.append(i)
                 } else {
                     i += 1
                 }

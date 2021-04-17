@@ -122,13 +122,13 @@
 			children = (
 				140CDFF0261FA88B00CBFF75 /* Cardify.swift */,
 				14A25710261FC96E00F0E111 /* Shapes.swift */,
-				14E339992620D45C00A7B49C /* StripedPattern.swift */,
 				14A25703261FBDD900F0E111 /* SetGameView.swift */,
 				14E339B22620E4D600A7B49C /* SetCardView.swift */,
 				14E339AE2620DDA000A7B49C /* CardContent.swift */,
 				14E339A32620D7EF00A7B49C /* CardShape.swift */,
 				14E339A62620D81600A7B49C /* CardShapeColorModifier.swift */,
 				14E339A92620D83D00A7B49C /* CardShapeShadingModifier.swift */,
+				14E339992620D45C00A7B49C /* StripedPattern.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
