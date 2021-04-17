@@ -16,14 +16,11 @@ struct SetGameView: View {
             Grid(viewModel.dealtCards) { card in
                 SetCardView(card: card)
                     .padding(5)
-                    .transition(AnyTransition.slide)
-                    .animation(.default)
+                    .transition(.slide)
+                    .animation(.linear(duration: 0.5))
                     .onTapGesture {
-                        withAnimation(.linear(duration: 0.05)) {
-                            viewModel.toggleSelect(card: card)
-                        }
+                        viewModel.toggleSelect(card: card)
                     }
-  
             }
         }
     }
@@ -32,9 +29,7 @@ struct SetGameView: View {
         GeometryReader { geometry in
             HStack(alignment: .center) {
                 Button(action: {
-                    withAnimation(.easeInOut(duration: 0.75)) {
-                        viewModel.resetGame()
-                    }
+                    viewModel.resetGame()
                 }, label: {
                     HStack {
                         Image(systemName: "plus.square.on.square")

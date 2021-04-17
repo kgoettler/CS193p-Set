@@ -39,10 +39,23 @@ class SetGameViewModel: ObservableObject {
     }
     
     func toggleSelect(card: SetCard) {
-        let index = model.dealtCards.firstIndex(matching: card)!
-        model.dealtCards[index].isSelected = !model.dealtCards[index].isSelected
+        // Before selecting the new card, check if three cards are already selected
         if model.threeCardsSelected {
-            model.handlePotentialSet()
+            if model.isSelectionSet {
+                model.replaceMatchedCards()
+            } else {
+                model.resetSelectedCards()
+            }
+        }
+        // Select new card
+        let index = model.dealtCards.firstIndex(matching: card)
+        // If selected card still exists, handle selection event
+        if let index = index {
+            model.dealtCards[index].isSelected = !model.dealtCards[index].isSelected
+            // Check if this is a set
+            if model.threeCardsSelected {
+                model.handlePotentialSet()
+            }
         }
     }
     

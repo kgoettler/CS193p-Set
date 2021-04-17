@@ -27,7 +27,7 @@ struct SetGame {
                 }
             }
         }
-        deck.shuffle()
+        //deck.shuffle()
         // Deal initial set of 12 cards
         for _ in 1...12 {
             dealtCards.append(self.draw()!)
@@ -61,6 +61,44 @@ struct SetGame {
         }
     }
     
+    mutating func handlePotentialSet() {
+        if isSelectionSet {
+            score += 1
+            dealtCards.indices.filter({ dealtCards[$0].isSelected }).forEach({ dealtCards[$0].isMatched = true })
+        } else {
+            score -= 1
+            dealtCards.indices.filter({ dealtCards[$0].isSelected }).forEach({ dealtCards[$0].isMatched = false })
+        }
+    }
+    
+    mutating func replaceMatchedCards() {
+        // Remove matched cards
+        var i = 0
+        let insertIndex = dealtCards.indices.filter({ index in dealtCards[index].isSelected })
+        repeat {
+            if dealtCards[i].isSelected {
+                dealtCards.remove(at: i)
+            } else {
+                i += 1
+            }
+        } while i < dealtCards.count
+        // Deal three new cards
+        if dealtCards.count < 12 {
+            for index in insertIndex {
+                deal(in: 1, at: index)
+            }
+        }
+    }
+    
+    mutating func resetSelectedCards() {
+        dealtCards.indices
+            .filter({ dealtCards[$0].isSelected })
+            .forEach({
+                dealtCards[$0].isSelected = false
+                dealtCards[$0].isMatched = nil
+            })
+    }
+    
     var isSelectionSet: Bool {
         if threeCardsSelected {
             let selectedCards = dealtCards.filter({card in card.isSelected})
@@ -74,31 +112,6 @@ struct SetGame {
             }
         }
         return false
-    }
-    
-    mutating func handlePotentialSet() {
-        if isSelectionSet {
-            score += 1
-            // Remove matched cards
-            var i = 0
-            let insertIndex = dealtCards.indices.filter({ index in dealtCards[index].isSelected })
-            repeat {
-                if dealtCards[i].isSelected {
-                    dealtCards.remove(at: i)
-                } else {
-                    i += 1
-                }
-            } while i < dealtCards.count
-            // Deal three new cards
-            if dealtCards.count < 12 {
-                for index in insertIndex {
-                    deal(in: 1, at: index)
-                }
-            }
-        } else {
-            score -= 1
-            dealtCards.indices.filter({ dealtCards[$0].isSelected }).forEach({ dealtCards[$0].isSelected = false })
-        }
     }
     
     var threeCardsSelected: Bool {
@@ -129,7 +142,7 @@ struct SetCard: Identifiable {
     var fill: SetShading
     var count: SetCount
     var isSelected: Bool = false
-    var isMatched: Bool = false
+    var isMatched: Bool?
     var id: Int
     
     enum SetCount: Int, CaseIterable, Hashable {
