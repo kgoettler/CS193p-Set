@@ -41,13 +41,14 @@ struct SetGameView: View {
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: geometry.size.width/3)
                 Button(
-                    action: { viewModel.deal(in: 3) },
+                    action: { viewModel.dealButtonPressed() },
                     label: { Text("Deal 3 Cards") }
                 )
                     .disabled(viewModel.deck.count < 3)
                     .frame(maxWidth: geometry.size.width / 3)
             }
-        }.frame(maxHeight: 50).padding(.top)
+        }
+        .frame(maxHeight: 50).padding(.top)
     }
 }
 

@@ -34,6 +34,7 @@ struct SetGame {
         }
     }
     
+    /// Draw a single card
     mutating func draw() -> SetCard? {
         if deck.count > 0 {
             return deck.removeFirst()
@@ -41,6 +42,10 @@ struct SetGame {
         return nil
     }
     
+    /// Deal in a number of cards
+    ///
+    /// - Parameters:
+    ///     - in: the number of cards to deal in
     mutating func deal(in: Int) {
         for _ in 1...`in` {
             if let card = self.draw() {
@@ -51,6 +56,11 @@ struct SetGame {
         }
     }
     
+    /// Deal in a number of cards at a specific location in the stack of dealt cards
+    ///
+    /// - Parameters:
+    ///     - in: the number of cards to deal in
+    ///     - at: index at which to deal in cards
     mutating func deal(in: Int, at: Int) {
         for _ in 1...`in` {
             if let card = self.draw() {
@@ -61,6 +71,7 @@ struct SetGame {
         }
     }
     
+    /// Handle a potential set by setting the isMatched property on the selected cards appropriately and incrementing/decrementing the score
     mutating func handlePotentialSet() {
         if isSelectionSet {
             score += 1
@@ -71,7 +82,9 @@ struct SetGame {
         }
     }
     
-    mutating func replaceMatchedCards() {
+    /// Handle a matching set of three cards
+    /// Remove the three matched cards and deal in three new ones (if there are less than 12 cards on the table)
+    mutating func handleMatchedSet() {
         // Remove matched cards
         var i = 0
         let insertIndex = dealtCards.indices.filter({ index in dealtCards[index].isSelected })
@@ -90,7 +103,9 @@ struct SetGame {
         }
     }
     
-    mutating func resetSelectedCards() {
+    /// Handle a non-matching set of three cards
+    /// Deselect all three cards and reset the isMatched property
+    mutating func handleUnmatchedSet() {
         dealtCards.indices
             .filter({ dealtCards[$0].isSelected })
             .forEach({
@@ -99,6 +114,8 @@ struct SetGame {
             })
     }
     
+    /// Determines whether three selected cards form a set
+    /// This is essentially the game logic
     var isSelectionSet: Bool {
         if threeCardsSelected {
             let selectedCards = dealtCards.filter({card in card.isSelected})
@@ -107,13 +124,13 @@ struct SetGame {
             let numberOfFills = selectedCards.map({ $0.fill }).distinct().count
             let numberOfCounts = selectedCards.map({ $0.count }).distinct().count
             if numberOfShapes != 2 && numberOfColors != 2 && numberOfFills != 2 && numberOfCounts != 2 {
-                print("Set found!")
                 return true
             }
         }
         return false
     }
     
+    /// Determines whether three cards are selected
     var threeCardsSelected: Bool {
         var numberOfSelectedCards: Int = 0
         for index in 0..<dealtCards.count {
@@ -170,4 +187,3 @@ struct SetCard: Identifiable {
     }
     
 }
-

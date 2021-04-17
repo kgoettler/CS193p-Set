@@ -22,10 +22,6 @@ class SetGameViewModel: ObservableObject {
         model.score
     }
     
-    var remaining: Int {
-        model.deck.count
-    }
-    
     var isSelectionSet: Bool {
         model.isSelectionSet
     }
@@ -38,13 +34,21 @@ class SetGameViewModel: ObservableObject {
         model.deal(in: `in`)
     }
     
+    func dealButtonPressed() {
+        if model.threeCardsSelected && model.isSelectionSet {
+            model.handleMatchedSet()
+        } else {
+            model.deal(in: 3)
+        }
+    }
+    
     func toggleSelect(card: SetCard) {
         // Before selecting the new card, check if three cards are already selected
         if model.threeCardsSelected {
             if model.isSelectionSet {
-                model.replaceMatchedCards()
+                model.handleMatchedSet()
             } else {
-                model.resetSelectedCards()
+                model.handleUnmatchedSet()
             }
         }
         // Select new card
